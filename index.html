@@ -379,7 +379,8 @@
                             "목표: 수면, 스트레스 등 매일 변하는 컨디션 데이터를 반영하여 최적의 인슐린 용량을 산출하는 AI 맞춤형 추천 엔진 개발.",
                             "주요내용 (역할: AI/데이터 로직 설계): 의료 통계 표준인 R을 활용하여 수면 단계 및 스트레스 지수에 따른 평균 혈당 변동성과 가중치를 통계적으로 계산 및 시각화. 도출된 통계적 가이드라인을 Python 기반 AI 엔진에 이식하여 실시간 변수를 반영하는 하이브리드 추천 로직 설계.",
                             "성과: R과 Python 두 엔진 간 상관관계 0.99의 높은 신뢰도를 확보하며 알고리즘 정확성 입증. (백엔드 개발의 핵심인 데이터 처리 및 로직 설계 역량 증명)"
-                        ]
+                        ],
+                        images: ["./almatdang_award.jpg", "./almatdang_ui.jpg"]
                     }
                 },
                 {
@@ -393,7 +394,8 @@
                             "목적: 재난 현장 소방관의 구조적 한계 극복 및 대전 지역 관광 활성화.",
                             "주요내용: LiDAR 센서와 열화상 데이터를 결합한 4D 위협 지도 생성 로직 기획(CPO). 관광을 놀이로 바꾸는 다마고치 형태의 앱 기획 및 마케팅(마케터).",
                             "성과: 지식재산 창업해커톤 우수상 및 로컬 창업 아이디어 펀딩 스쿨 우수상 연속 수상. 창업과 개발 생태계에 눈을 뜨고 직접 코딩하는 개발자가 되겠다는 확고한 목표 확립."
-                        ]
+                        ],
+                        images: ["./local_award.jpg", "./local_activity.jpg"]
                     }
                 },
                 {
@@ -408,7 +410,8 @@
                             "목표: 공장의 데이터 은닉 문제를 해결하고, 공급처와 수요처를 최단 거리에서 연결하는 지능형 매칭 플랫폼 구축.",
                             "주요내용: 기업 데이터 보안 리스크를 해소하기 위한 '무기명·집계화' 데이터 수집 모델 설계. IoT 센서를 통한 데이터 수집 및 안전한 백엔드 처리 프로세스 기획.",
                             "성과: 현실적인 ESG 전략과 정교한 데이터 관리 기획력을 인정받아 ESG 경영 전문가 양성 교육 최우수상 수상."
-                        ]
+                        ],
+                        images: ["./esg_award.jpg", "./esg_activity.jpg"]
                     }
                 }
             ];
@@ -498,16 +501,18 @@
                                     </ul>
                                 </div>
 
-                                {/* Right Column: Image */}
-                                <div className="w-full md:w-1/2 bg-slate-900/50 border-t md:border-t-0 md:border-l border-slate-700/60 flex items-center justify-center p-8 md:p-12">
-                                    <div className={`relative w-full rounded-2xl overflow-hidden shadow-2xl ${selectedActivity.theme.shadow}`}>
-                                        <img
-                                            src="https://via.placeholder.com/600x400"
-                                            alt={selectedActivity.modalContent.subTitle}
-                                            className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
-                                        />
-                                        <div className={`absolute inset-0 bg-gradient-to-tr from-${selectedActivity.theme.bg.split('-')[1]}-900/40 to-transparent mix-blend-overlay`}></div>
-                                    </div>
+                                {/* Right Column: Images */}
+                                <div className="w-full md:w-1/2 bg-slate-900/50 border-t md:border-t-0 md:border-l border-slate-700/60 flex flex-col gap-6 lg:gap-8 items-center justify-start p-8 md:p-12">
+                                    {selectedActivity.modalContent.images && selectedActivity.modalContent.images.map((imgSrc, imgIdx) => (
+                                        <div key={imgIdx} className={`relative w-full rounded-lg overflow-hidden shadow-2xl ${selectedActivity.theme.shadow} flex-shrink-0`}>
+                                            <img
+                                                src={imgSrc}
+                                                alt={`${selectedActivity.modalContent.subTitle} - Image ${imgIdx + 1}`}
+                                                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                                            />
+                                            <div className={`absolute inset-0 bg-gradient-to-tr from-${selectedActivity.theme.bg.split('-')[1]}-900/40 to-transparent mix-blend-overlay pointer-events-none`}></div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
