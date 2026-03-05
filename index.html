@@ -364,26 +364,57 @@
 
         // 5. Major Activities Section
         const MajorActivities = () => {
+            const [selectedActivity, setSelectedActivity] = useState(null);
+
             const activitiesList = [
                 {
                     title: "1. 장애·비장애 (의료 접근성)",
                     subtitle: "1형 당뇨 환자를 위한 AI 맞춤형 인슐린 추천 엔진 '알맞당'",
-                    theme: { text: "text-brand-primary", border: "hover:border-brand-primary", shadow: "hover:shadow-[0_0_30px_rgba(57,255,20,0.6)]", bg: "bg-brand-primary", delay: "" }
+                    theme: { text: "text-brand-primary", border: "hover:border-brand-primary", shadow: "hover:shadow-[0_0_30px_rgba(57,255,20,0.6)]", bg: "bg-brand-primary", delay: "" },
+                    modalContent: {
+                        topTitle: "주요 활동 1 : 기술적 도전과 데이터 역량",
+                        subTitle: "프로젝트명: 알맞당 (제5회 장애·비장애 대학생 창업경진대회)",
+                        body: [
+                            "목적: 1형 당뇨 환자들이 인슐린 용량을 수동 계산의 '감'에 의존해야 하는 치명적인 문제 해결.",
+                            "목표: 수면, 스트레스 등 매일 변하는 컨디션 데이터를 반영하여 최적의 인슐린 용량을 산출하는 AI 맞춤형 추천 엔진 개발.",
+                            "주요내용 (역할: AI/데이터 로직 설계): 의료 통계 표준인 R을 활용하여 수면 단계 및 스트레스 지수에 따른 평균 혈당 변동성과 가중치를 통계적으로 계산 및 시각화. 도출된 통계적 가이드라인을 Python 기반 AI 엔진에 이식하여 실시간 변수를 반영하는 하이브리드 추천 로직 설계.",
+                            "성과: R과 Python 두 엔진 간 상관관계 0.99의 높은 신뢰도를 확보하며 알고리즘 정확성 입증. (백엔드 개발의 핵심인 데이터 처리 및 로직 설계 역량 증명)"
+                        ]
+                    }
                 },
                 {
                     title: "2. 지식재산 / 로컬 창업 (안전 및 지역 활성화)",
                     subtitle: "재난 라이다 스마트 헬멧 & 대전 관광 앱 '꿈돌고치'",
-                    theme: { text: "text-brand-secondary", border: "hover:border-brand-secondary", shadow: "hover:shadow-[0_0_30px_rgba(255,230,0,0.6)]", bg: "bg-brand-secondary", delay: "delay-100" }
+                    theme: { text: "text-brand-secondary", border: "hover:border-brand-secondary", shadow: "hover:shadow-[0_0_30px_rgba(255,230,0,0.6)]", bg: "bg-brand-secondary", delay: "delay-100" },
+                    modalContent: {
+                        topTitle: "주요 활동 2 : 기획의 시작점과 아이디어 구체화",
+                        subTitle: "프로젝트명: 재난 라이다 헬멧 'RESCUE i' & 로컬 관광 앱 '꿈돌고치'",
+                        body: [
+                            "목적: 재난 현장 소방관의 구조적 한계 극복 및 대전 지역 관광 활성화.",
+                            "주요내용: LiDAR 센서와 열화상 데이터를 결합한 4D 위협 지도 생성 로직 기획(CPO). 관광을 놀이로 바꾸는 다마고치 형태의 앱 기획 및 마케팅(마케터).",
+                            "성과: 지식재산 창업해커톤 우수상 및 로컬 창업 아이디어 펀딩 스쿨 우수상 연속 수상. 창업과 개발 생태계에 눈을 뜨고 직접 코딩하는 개발자가 되겠다는 확고한 목표 확립."
+                        ]
+                    }
                 },
                 {
                     title: "3. ESG (환경 및 에너지 효율)",
                     subtitle: "산업단지 발생 폐열 재활용 지능형 매칭 플랫폼 '히트백'",
-                    theme: { text: "text-brand-accent", border: "hover:border-brand-accent", shadow: "hover:shadow-[0_0_30px_rgba(255,0,127,0.6)]", bg: "bg-brand-accent", delay: "delay-200" }
+                    theme: { text: "text-brand-accent", border: "hover:border-brand-accent", shadow: "hover:shadow-[0_0_30px_rgba(255,0,127,0.6)]", bg: "bg-brand-accent", delay: "delay-200" },
+                    modalContent: {
+                        topTitle: "주요 활동 3 : 아키텍처 기획 역량",
+                        subTitle: "프로젝트명: 산업단지 폐열 재활용 플랫폼 '히트백'",
+                        body: [
+                            "목적: 산업단지에서 버려지는 막대한 폐열(연간 1,136만 TOE)을 에너지 자원으로 전환하여 온실가스 감축.",
+                            "목표: 공장의 데이터 은닉 문제를 해결하고, 공급처와 수요처를 최단 거리에서 연결하는 지능형 매칭 플랫폼 구축.",
+                            "주요내용: 기업 데이터 보안 리스크를 해소하기 위한 '무기명·집계화' 데이터 수집 모델 설계. IoT 센서를 통한 데이터 수집 및 안전한 백엔드 처리 프로세스 기획.",
+                            "성과: 현실적인 ESG 전략과 정교한 데이터 관리 기획력을 인정받아 ESG 경영 전문가 양성 교육 최우수상 수상."
+                        ]
+                    }
                 }
             ];
 
             return (
-                <section id="activities" className="py-24 md:py-32 bg-transparent transition-colors min-h-screen flex items-center">
+                <section id="activities" className="py-24 md:py-32 bg-transparent transition-colors min-h-screen flex items-center relative z-20">
                     <div className="max-w-7xl mx-auto px-6 w-full">
                         <div className="mb-16 md:mb-24 text-center">
                             <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">Major Activities <span className="text-brand-primary">.</span></h2>
@@ -393,7 +424,9 @@
                             {activitiesList.map((activity, idx) => {
                                 const { theme } = activity;
                                 return (
-                                    <div key={idx} className={`fade-in-section ${theme.delay} flex flex-col items-center justify-center p-8 md:p-12 lg:p-16 rounded-3xl bg-brand-cardDark border-2 border-slate-700 transition-all duration-500 cursor-pointer group hover:-translate-y-2 ${theme.border} w-full relative overflow-hidden`}>
+                                    <div key={idx}
+                                        onClick={() => setSelectedActivity(activity)}
+                                        className={`fade-in-section ${theme.delay} flex flex-col items-center justify-center p-8 md:p-12 lg:p-16 rounded-3xl bg-brand-cardDark border-2 border-slate-700 transition-all duration-500 cursor-pointer group hover:-translate-y-2 ${theme.border} w-full relative overflow-hidden`}>
                                         <div className="absolute inset-0 bg-slate-900 opacity-50 z-0"></div>
                                         {/* Glow Layer Behind */}
                                         <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl z-0 ${theme.shadow}`}></div>
@@ -412,6 +445,73 @@
                             })}
                         </div>
                     </div>
+
+                    {/* Modal Overlay */}
+                    {selectedActivity && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-sm transition-opacity" onClick={() => setSelectedActivity(null)}>
+                            {/* Modal Content container - Stop propagation so clicking inside doesn't close it */}
+                            <div className={`bg-brand-cardDark border border-slate-600 rounded-3xl w-full max-w-6xl max-h-[90vh] overflow-y-auto overflow-x-hidden flex flex-col md:flex-row relative shadow-[0_0_50px_rgba(0,0,0,0.8)] ${selectedActivity.theme.shadow} animate-[fadeIn_0.3s_ease-out]`} onClick={(e) => e.stopPropagation()}>
+
+                                {/* Close Button */}
+                                <button
+                                    onClick={() => setSelectedActivity(null)}
+                                    className="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-white transition-colors z-[60] bg-slate-800/80 hover:bg-slate-700 backdrop-blur-md rounded-full p-2 border border-slate-600 shadow-xl"
+                                    aria-label="Close modal"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+
+                                {/* Left Column: Text Details */}
+                                <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-brand-cardDark relative z-10">
+                                    <h2 className={`text-2xl md:text-3xl lg:text-4xl font-black mb-6 ${selectedActivity.theme.text} leading-tight`}>
+                                        {selectedActivity.modalContent.topTitle}
+                                    </h2>
+                                    <h3 className="text-xl md:text-2xl font-bold text-white mb-8 pb-6 border-b border-slate-700/60 leading-snug">
+                                        {selectedActivity.modalContent.subTitle}
+                                    </h3>
+
+                                    <ul className="space-y-6 text-slate-300 text-base md:text-lg leading-loose font-medium">
+                                        {selectedActivity.modalContent.body.map((paragraph, index) => {
+                                            const colonIndex = paragraph.indexOf(":");
+                                            if (colonIndex !== -1 && colonIndex < 15) { // Ensure it's not matching a random colon deep in text
+                                                const label = paragraph.substring(0, colonIndex + 1);
+                                                const rest = paragraph.substring(colonIndex + 1);
+                                                return (
+                                                    <li key={index} className="flex gap-3">
+                                                        <span className={`${selectedActivity.theme.text} text-xl mt-1`}>&bull;</span>
+                                                        <span className="flex-1">
+                                                            <strong className="text-white block sm:inline mr-2">{label}</strong>
+                                                            {rest}
+                                                        </span>
+                                                    </li>
+                                                );
+                                            }
+                                            return (
+                                                <li key={index} className="flex gap-3">
+                                                    <span className={`${selectedActivity.theme.text} text-xl mt-1`}>&bull;</span>
+                                                    <span>{paragraph}</span>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                </div>
+
+                                {/* Right Column: Image */}
+                                <div className="w-full md:w-1/2 bg-slate-900/50 border-t md:border-t-0 md:border-l border-slate-700/60 flex items-center justify-center p-8 md:p-12">
+                                    <div className={`relative w-full rounded-2xl overflow-hidden shadow-2xl ${selectedActivity.theme.shadow}`}>
+                                        <img
+                                            src="https://via.placeholder.com/600x400"
+                                            alt={selectedActivity.modalContent.subTitle}
+                                            className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                                        />
+                                        <div className={`absolute inset-0 bg-gradient-to-tr from-${selectedActivity.theme.bg.split('-')[1]}-900/40 to-transparent mix-blend-overlay`}></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </section>
             );
         };
