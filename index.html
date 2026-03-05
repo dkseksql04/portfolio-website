@@ -57,7 +57,8 @@
 
 </head>
 
-<body class="selection:bg-brand-primary selection:text-white transition-colors duration-300">
+<body
+    class="bg-brand-dark text-slate-300 selection:bg-brand-primary selection:text-white font-sans antialiased overflow-x-hidden">
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
@@ -397,11 +398,13 @@
 
             useEffect(() => {
                 // Enforce dark mode class on body unconditionally
+                document.documentElement.classList.add('dark');
                 document.body.classList.add('dark');
+                document.body.style.backgroundColor = '#0f172a'; // Force Navy via inline style
             }, []);
 
             return (
-                <div className="flex flex-col min-h-screen">
+                <div className="flex flex-col min-h-screen bg-brand-dark text-slate-300 w-full">
                     <Header darkMode={darkMode} setDarkMode={setDarkMode} />
                     <main className="flex-1 w-full overflow-x-hidden">
                         <Hero />
