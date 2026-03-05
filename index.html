@@ -81,8 +81,9 @@
                             <nav className="flex gap-8 text-sm font-medium">
                                 <a href="#home" className="hover:text-brand-primary transition-colors cursor-pointer text-slate-300">Home</a>
                                 <a href="#experience" className="hover:text-brand-secondary transition-colors cursor-pointer text-slate-300">Experience & Journey</a>
-                                <a href="#projects" className="hover:text-brand-accent transition-colors cursor-pointer text-slate-300">Projects</a>
-                                <a href="#awards" className="hover:text-brand-primary transition-colors cursor-pointer text-slate-300">Awards & Activities</a>
+                                <a href="#timeline" className="hover:text-brand-accent transition-colors cursor-pointer text-slate-300">Milestones</a>
+                                <a href="#projects" className="hover:text-brand-primary transition-colors cursor-pointer text-slate-300">Projects</a>
+                                <a href="#awards" className="hover:text-brand-secondary transition-colors cursor-pointer text-slate-300">Awards & Activities</a>
                             </nav>
                             {/* Dark Mode Toggle */}
                             <button
@@ -129,6 +130,7 @@
                         <div className="md:hidden absolute top-20 left-0 w-full bg-white dark:bg-brand-dark border-b border-slate-200 dark:border-slate-700 shadow-lg px-6 py-4 flex flex-col gap-4 text-sm font-medium">
                             <a href="#home" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Home</a>
                             <a href="#experience" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Experience & Journey</a>
+                            <a href="#timeline" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Milestones</a>
                             <a href="#projects" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Projects</a>
                             <a href="#awards" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Awards & Activities</a>
                         </div>
@@ -243,7 +245,91 @@
             );
         };
 
-        // 4. Projects Section
+        // 4. Timeline Section
+        const Timeline = () => {
+            const timelineData = [
+                { year: "2024", date: "19", content: "충남대학교 학생생활관 RC활동 우수활동자 표창 수상 (RC 센터장상)", color: "brand-primary" },
+                { year: "2025", date: "20", content: "Coursera 'Google AI Essentials' 과정 수료", color: "brand-secondary" },
+                { year: "2025", date: "25", content: "AI 전문가 2급 자격증 취득 (한국창직협회)", color: "brand-accent" },
+                { year: "2025", date: "21", content: "2025년 공대생 인문도서 감상문 경진대회 '우수상' 수상 (도서: 『이어령의 마지막 수업』)", color: "brand-primary" },
+                { year: "2025", date: "22", content: "2025 대전 전략사업 지식재산 창업해커톤 경진대회 우수상 (재난 라이다 스마트 헬멧)", color: "brand-secondary" },
+                { year: "2025", date: "25", content: "Gemini Academy 수료", color: "brand-accent" },
+                { year: "2025", date: "30", content: "AI Practical Content Creation 수료 (UMAVEN / 충남대학교 ESG 센터)", color: "brand-primary" },
+                { year: "2025", date: "17", content: "2025학년도 CNU RC 프로그램 우수활동자 표창 수상", color: "brand-secondary" },
+                { year: "2025", date: "17 ~ 2026. 02. 18", content: "한국어 연수생 도우미 프로그램 활동", color: "brand-accent" },
+                { year: "2025", date: "24", content: "로컬 창업 아이디어 펀딩 스쿨 프로젝트 발표 우수상 - 대전 관광 앱 '꿈돌고치' 기획", color: "brand-primary" },
+                { year: "2026", date: "05 ~ 2026. 02. 07", content: "AI 분석을 위한 R통계교육 및 AI 기반 산업체 빅데이터 분석 실습교육 이수", color: "brand-secondary" },
+                { year: "2026", date: "14", content: "제14회 CNU 리드미 독후감 공모전 최우수상 (도서: 『물고기는 존재하지 않는다』)", color: "brand-accent" },
+                { year: "2026", date: "23", content: "ESG 경영 전문가 양성 교육 최우수상 (산업단지 발생 폐열 재활용), ESG 전문가 1급 자격증 취득", color: "brand-primary" },
+                { year: "2026", date: "12", content: "2026년 제5회 장애·비장애 대학생 창업경진대회 우수상 - 1형 당뇨 환자를 위한 AI 기반 최적화 인슐린 계산기 '알맞당' 기획", color: "brand-secondary" }
+            ];
+
+            return (
+                <section id="timeline" className="py-20 md:py-24 bg-transparent border-t border-slate-800 transition-colors">
+                    <div className="max-w-4xl mx-auto px-6">
+                        <div className="mb-16 text-center">
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Milestones <span className="text-brand-accent">.</span></h2>
+                            <p className="text-slate-400">세부 이력 및 활동 타임라인</p>
+                        </div>
+
+                        <div className="relative">
+                            {/* Central Vertical Line */}
+                            <div className="absolute left-[15px] md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-800 md:-translate-x-1/2"></div>
+
+                            {timelineData.map((item, index) => {
+                                const isLeft = index % 2 === 0;
+                                const showYear = index === 0 || timelineData[index - 1].year !== item.year;
+
+                                const getTheme = (color) => {
+                                    if (color === 'brand-primary') return { text: 'text-brand-primary', bg: 'bg-brand-primary', borderHover: 'hover:border-brand-primary', shadowHover: 'hover:shadow-[0_0_20px_rgba(57,255,20,0.5)]' };
+                                    if (color === 'brand-secondary') return { text: 'text-brand-secondary', bg: 'bg-brand-secondary', borderHover: 'hover:border-brand-secondary', shadowHover: 'hover:shadow-[0_0_20px_rgba(255,230,0,0.5)]' };
+                                    return { text: 'text-brand-accent', bg: 'bg-brand-accent', borderHover: 'hover:border-brand-accent', shadowHover: 'hover:shadow-[0_0_20px_rgba(255,0,127,0.5)]' };
+                                };
+                                const theme = getTheme(item.color);
+
+                                return (
+                                    <React.Fragment key={index}>
+                                        {showYear && (
+                                            <div className="relative z-10 flex justify-start pl-8 md:pl-0 md:justify-center mb-10 mt-8">
+                                                <div className="bg-brand-dark text-white font-black px-6 py-2 rounded-full border border-slate-700 text-lg shadow-lg">
+                                                    {item.year}년
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        <div className={`mb-8 flex flex-col md:flex-row justify-between items-start md:items-center w-full relative group ${isLeft ? 'md:flex-row-reverse' : ''}`}>
+
+                                            {/* Empty half for desktop spacing */}
+                                            <div className="hidden md:block w-5/12"></div>
+
+                                            {/* Center Dot */}
+                                            <div className="absolute left-[-2px] md:left-1/2 top-6 md:top-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2 z-10 flex items-center justify-center">
+                                                <div className={`w-4 h-4 rounded-full ${theme.bg} border-4 border-brand-dark group-hover:scale-150 transition-all duration-300 shadow-[0_0_10px_currentColor] ${theme.text}`}></div>
+                                            </div>
+
+                                            {/* Content Card */}
+                                            <div className={`w-full md:w-5/12 pl-12 md:pl-0 ${isLeft ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
+                                                <div className={`bg-brand-cardDark p-5 md:p-6 rounded-2xl border border-slate-700 transition-all duration-300 transform group-hover:-translate-y-1 ${theme.borderHover} ${theme.shadowHover}`}>
+                                                    <div className={`${theme.text} text-xs font-black mb-2 tracking-wider bg-slate-800/80 inline-block px-3 py-1 rounded-md`}>
+                                                        {item.date}
+                                                    </div>
+                                                    <h4 className="text-sm md:text-base font-bold text-slate-200 leading-snug group-hover:text-white transition-colors">
+                                                        {item.content}
+                                                    </h4>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </React.Fragment>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // 5. Projects Section
         const Projects = () => {
             const projectsList = [
                 {
@@ -314,7 +400,7 @@
             );
         };
 
-        // 5. Awards & Activities Section
+        // 6. Awards & Activities Section
         const Awards = () => {
             const categories = [
                 {
@@ -380,7 +466,7 @@
             );
         };
 
-        // 6. Footer
+        // 7. Footer
         const Footer = () => {
             return (
                 <footer className="bg-transparent border-t border-slate-800 py-10 md:py-12 transition-colors">
@@ -419,6 +505,7 @@
                     <main className="flex-1 w-full overflow-x-hidden">
                         <Hero />
                         <Experience />
+                        <Timeline />
                         <Projects />
                         <Awards />
                     </main>
