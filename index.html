@@ -54,6 +54,39 @@
     <!-- Font (Pretendard) -->
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        /* Pretendard Font (Web Font) */
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        /* Scroll Animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .delay-100 {
+            transition-delay: 100ms;
+        }
+
+        .delay-200 {
+            transition-delay: 200ms;
+        }
+
+        .delay-300 {
+            transition-delay: 300ms;
+        }
+    </style>
 
 </head>
 
@@ -190,7 +223,7 @@
 
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
                             {/* Card 1: Yellow (Secondary) */}
-                            <div className="bg-brand-cardDark border-2 border-slate-700 p-8 rounded-2xl flex flex-col h-full group transition-all duration-300 hover:-translate-y-3 hover:border-brand-secondary hover:shadow-[0_0_30px_rgba(255,230,0,0.5)] relative overflow-hidden">
+                            <div className="fade-in-section bg-brand-cardDark border-2 border-slate-700 p-8 rounded-2xl flex flex-col h-full group transition-all duration-300 hover:-translate-y-3 hover:border-brand-secondary hover:shadow-[0_0_30px_rgba(255,230,0,0.5)] relative overflow-hidden">
                                 <div className="absolute -top-10 -right-10 w-24 h-24 bg-brand-secondary/10 rounded-full blur-2xl group-hover:bg-brand-secondary/30 transition-all duration-500"></div>
                                 <h3 className="text-2xl font-black text-white mb-2 group-hover:text-brand-secondary transition-colors relative z-10">자격증 및 수료증</h3>
                                 <p className="text-brand-secondary text-sm font-bold mb-4 tracking-wide relative z-10">빌더로 도약하기 위한 기술적 기초 체력</p>
@@ -208,7 +241,7 @@
                             </div>
 
                             {/* Card 2: Pink (Accent) */}
-                            <div className="bg-brand-cardDark border-2 border-slate-700 p-8 rounded-2xl flex flex-col h-full group transition-all duration-300 hover:-translate-y-3 hover:border-brand-accent hover:shadow-[0_0_30px_rgba(255,0,127,0.5)] relative overflow-hidden">
+                            <div className="fade-in-section delay-100 bg-brand-cardDark border-2 border-slate-700 p-8 rounded-2xl flex flex-col h-full group transition-all duration-300 hover:-translate-y-3 hover:border-brand-accent hover:shadow-[0_0_30px_rgba(255,0,127,0.5)] relative overflow-hidden">
                                 <div className="absolute -top-10 -right-10 w-24 h-24 bg-brand-accent/10 rounded-full blur-2xl group-hover:bg-brand-accent/30 transition-all duration-500"></div>
                                 <h3 className="text-2xl font-black text-white mb-2 group-hover:text-brand-accent transition-colors relative z-10">주요 활동</h3>
                                 <p className="text-brand-accent text-sm font-bold mb-4 tracking-wide relative z-10">사회의 빈 공간을 채우는 따뜻한 기획</p>
@@ -224,7 +257,7 @@
                             </div>
 
                             {/* Card 3: Green (Primary) */}
-                            <div className="bg-brand-cardDark border-2 border-slate-700 p-8 rounded-2xl flex flex-col h-full group transition-all duration-300 hover:-translate-y-3 hover:border-brand-primary hover:shadow-[0_0_30px_rgba(57,255,20,0.5)] relative overflow-hidden">
+                            <div className="fade-in-section delay-200 bg-brand-cardDark border-2 border-slate-700 p-8 rounded-2xl flex flex-col h-full group transition-all duration-300 hover:-translate-y-3 hover:border-brand-primary hover:shadow-[0_0_30px_rgba(57,255,20,0.5)] relative overflow-hidden">
                                 <div className="absolute -top-10 -right-10 w-24 h-24 bg-brand-primary/10 rounded-full blur-2xl group-hover:bg-brand-primary/30 transition-all duration-500"></div>
                                 <h3 className="text-2xl font-black text-white mb-2 group-hover:text-brand-primary transition-colors relative z-10">기타 활동</h3>
                                 <p className="text-brand-primary text-sm font-bold mb-4 tracking-wide relative z-10">효율의 세계에 더해진 다양성과 공감</p>
@@ -288,7 +321,7 @@
                                 const theme = getTheme(item.color);
 
                                 return (
-                                    <React.Fragment key={index}>
+                                    <div key={index} className="fade-in-section relative z-10 w-full">
                                         {showYear && (
                                             <div className="relative z-10 flex justify-start pl-8 md:pl-0 md:justify-center mb-10 mt-8">
                                                 <div className="bg-brand-dark text-white font-black px-6 py-2 rounded-full border border-slate-700 text-lg shadow-lg">
@@ -320,7 +353,7 @@
                                             </div>
 
                                         </div>
-                                    </React.Fragment>
+                                    </div>
                                 );
                             })}
                         </div>
@@ -497,6 +530,21 @@
                 document.documentElement.classList.add('dark');
                 document.body.classList.add('dark');
                 document.body.style.backgroundColor = '#0f172a'; // Force Navy via inline style
+
+                // Setup IntersectionObserver for scroll animations
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+                setTimeout(() => {
+                    document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+                }, 100);
+
+                return () => observer.disconnect();
             }, []);
 
             return (
