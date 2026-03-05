@@ -80,7 +80,7 @@
                         <div className="hidden md:flex items-center gap-8">
                             <nav className="flex gap-8 text-sm font-medium">
                                 <a href="#home" className="hover:text-brand-primary transition-colors cursor-pointer text-slate-300">Home</a>
-                                <a href="#about" className="hover:text-brand-secondary transition-colors cursor-pointer text-slate-300">About Me</a>
+                                <a href="#experience" className="hover:text-brand-secondary transition-colors cursor-pointer text-slate-300">Experience & Journey</a>
                                 <a href="#projects" className="hover:text-brand-accent transition-colors cursor-pointer text-slate-300">Projects</a>
                                 <a href="#awards" className="hover:text-brand-primary transition-colors cursor-pointer text-slate-300">Awards & Activities</a>
                             </nav>
@@ -128,7 +128,7 @@
                     {isMenuOpen && (
                         <div className="md:hidden absolute top-20 left-0 w-full bg-white dark:bg-brand-dark border-b border-slate-200 dark:border-slate-700 shadow-lg px-6 py-4 flex flex-col gap-4 text-sm font-medium">
                             <a href="#home" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Home</a>
-                            <a href="#about" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">About Me</a>
+                            <a href="#experience" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Experience & Journey</a>
                             <a href="#projects" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Projects</a>
                             <a href="#awards" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Awards & Activities</a>
                         </div>
@@ -155,8 +155,8 @@
                                 1형 당뇨 환자를 위한 AI 솔루션을 기획하며, 누군가에게 당연한 기술이 다른 누군가에겐 '생존과 권리'의 문제임을 배웠습니다. 에너지 공학의 시스템적 사고에 인문학적 공감을 더해, 기술 소외 계층 없이 모두를 위한 서비스를 코딩하는 개발자로 성장하고 싶습니다.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center md:justify-start">
-                                <a href="#about" className="px-8 py-4 bg-brand-primary text-slate-900 hover:bg-white rounded-lg font-extrabold transition-all shadow-[0_0_15px_rgba(57,255,20,0.6)] hover:shadow-[0_0_25px_rgba(57,255,20,1)] hover:-translate-y-1 text-center">
-                                    저에 대해 알아보기
+                                <a href="#experience" className="px-8 py-4 bg-brand-primary text-slate-900 hover:bg-white rounded-lg font-extrabold transition-all shadow-[0_0_15px_rgba(57,255,20,0.6)] hover:shadow-[0_0_25px_rgba(57,255,20,1)] hover:-translate-y-1 text-center">
+                                    경험 및 여정 보기
                                 </a>
                                 <a href="#projects" className="px-8 py-4 bg-transparent border-2 border-brand-accent text-white hover:bg-brand-accent hover:text-white rounded-lg font-extrabold transition-all shadow-[0_0_10px_rgba(255,0,127,0.3)] hover:shadow-[0_0_20px_rgba(255,0,127,0.8)] hover:-translate-y-1 text-center">
                                     프로젝트 보기
@@ -176,62 +176,72 @@
             );
         };
 
-        // 3. About Me Section
-        const About = () => {
+        // 3. Experience & Journey Section
+        const Experience = () => {
             return (
-                <section id="about" className="py-20 md:py-24 bg-transparent border-y border-slate-800 transition-colors">
+                <section id="experience" className="py-20 md:py-24 bg-transparent border-y border-slate-800 transition-colors">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="mb-12 md:mb-16 text-center md:text-left">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">About Me <span className="text-brand-secondary">.</span></h2>
-                            <p className="text-slate-400">서로 다른 분야를 연결하여 새로운 가능성을 발견합니다.</p>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Experience & Journey <span className="text-brand-secondary">.</span></h2>
+                            <p className="text-slate-400">제가 걸어온 길, 그리고 배우고 느낀 자취들입니다.</p>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-                            <div className="space-y-6 text-base md:text-lg text-slate-300 leading-relaxed bg-brand-dark p-6 md:p-8 rounded-2xl border-t-4 border-t-brand-primary shadow-lg transition-colors relative overflow-hidden">
-                                <div className="absolute -top-10 -right-10 w-32 h-32 bg-brand-primary/10 rounded-full blur-2xl"></div>
-                                <p className="relative z-10">
-                                    저는 <strong className="text-brand-primary">충남대학교 에너지공학과</strong>에 재학 중이며, 데이터를 기반으로 한 문제 해결력과 공학적 사고를 길러왔습니다. <br className="hidden md:block" />
-                                    하지만 저의 호기심은 그곳에 머물지 않았습니다.
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
+                            {/* Card 1: Yellow (Secondary) */}
+                            <div className="bg-brand-cardDark border-2 border-slate-700 p-8 rounded-2xl flex flex-col h-full group transition-all duration-300 hover:-translate-y-3 hover:border-brand-secondary hover:shadow-[0_0_30px_rgba(255,230,0,0.5)] relative overflow-hidden">
+                                <div className="absolute -top-10 -right-10 w-24 h-24 bg-brand-secondary/10 rounded-full blur-2xl group-hover:bg-brand-secondary/30 transition-all duration-500"></div>
+                                <h3 className="text-2xl font-black text-white mb-2 group-hover:text-brand-secondary transition-colors relative z-10">자격증 및 수료증</h3>
+                                <p className="text-brand-secondary text-sm font-bold mb-4 tracking-wide relative z-10">빌더로 도약하기 위한 기술적 기초 체력</p>
+                                <p className="text-slate-300 text-sm leading-relaxed mb-6 flex-grow relative z-10">
+                                    단순한 아이디어 도출에 머물지 않고, 이를 실제 서비스로 구현하기 위해 실무적인 기술 역량을 탄탄히 다져왔습니다.
                                 </p>
-                                <p className="relative z-10">
-                                    세계를 움직이는 에너지가 '기술'이라면, 그 기술을 사람들에게 의미 있게 전달하는 것은 '기획'과 '마케팅'이라고 생각합니다.
-                                    특히, <strong className="text-brand-secondary">AI 기술</strong>이 가져올 변화에 깊은 관심을 가지고 있으며, AI를 활용하여 효율적이고 매력적인 서비스를 기획하는 데 열정을 쏟고 있습니다.
-                                </p>
-                                <p className="relative z-10">
-                                    단순한 개발이나 분석을 넘어, <strong className="text-brand-accent">"기술이 어떤 가치를 창출할 수 있는가"</strong>를 끊임없이 고민하며, 다방면의 재능을 결합하여 세상에 없는 가치를 제안하는 융합형 인재로 성장하고 있습니다.
-                                </p>
+                                <ul className="space-y-2 text-sm text-slate-400 font-medium relative z-10">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></span>Coursera AI</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></span>AI 전문가 2급</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></span>Gemini</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></span>AI Content Creation</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></span>R통계교육</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></span>ESG 1급</li>
+                                </ul>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                                <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl hover:border-brand-primary hover:shadow-[0_0_15px_rgba(57,255,20,0.3)] transition-all">
-                                    <div className="w-12 h-12 rounded-xl bg-brand-primary/20 text-brand-primary flex items-center justify-center mb-4 shadow-[0_0_10px_rgba(57,255,20,0.4)]">
-                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white mb-2">Energy Eng.</h3>
-                                    <p className="text-slate-400 text-sm">에너지 공학 지식을 바탕으로 한 논리적이고 체계적인 문제 접근 방식.</p>
-                                </div>
+                            {/* Card 2: Pink (Accent) */}
+                            <div className="bg-brand-cardDark border-2 border-slate-700 p-8 rounded-2xl flex flex-col h-full group transition-all duration-300 hover:-translate-y-3 hover:border-brand-accent hover:shadow-[0_0_30px_rgba(255,0,127,0.5)] relative overflow-hidden">
+                                <div className="absolute -top-10 -right-10 w-24 h-24 bg-brand-accent/10 rounded-full blur-2xl group-hover:bg-brand-accent/30 transition-all duration-500"></div>
+                                <h3 className="text-2xl font-black text-white mb-2 group-hover:text-brand-accent transition-colors relative z-10">주요 활동</h3>
+                                <p className="text-brand-accent text-sm font-bold mb-4 tracking-wide relative z-10">사회의 빈 공간을 채우는 따뜻한 기획</p>
+                                <p className="text-slate-300 text-sm leading-relaxed mb-6 flex-grow relative z-10">
+                                    의료 접근성, 재난 안전, 환경, 로컬 관광 등 사회 문제에 공감하며 AI 기반 서비스 기획으로 성과를 냈습니다.
+                                </p>
+                                <ul className="space-y-2 text-sm text-slate-400 font-medium relative z-10">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>창업해커톤 우수상</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>꿈돌고치 우수상</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>ESG 교육 최우수상</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>장애·비장애 창업경진대회 우수상</li>
+                                </ul>
+                            </div>
 
-                                <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl hover:border-brand-secondary hover:shadow-[0_0_15px_rgba(255,230,0,0.3)] transition-all">
-                                    <div className="w-12 h-12 rounded-xl bg-brand-secondary/20 text-brand-secondary flex items-center justify-center mb-4 shadow-[0_0_10px_rgba(255,230,0,0.4)]">
-                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white mb-2">AI Tech</h3>
-                                    <p className="text-slate-400 text-sm">최신 AI 동향을 분석하고, 서비스에 효과적으로 결합할 수 있는 인사이트.</p>
-                                </div>
-
-                                <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl hover:border-brand-accent hover:shadow-[0_0_15px_rgba(255,0,127,0.3)] transition-all sm:col-span-2">
-                                    <div className="w-12 h-12 rounded-xl bg-brand-accent/20 text-brand-accent flex items-center justify-center mb-4 shadow-[0_0_10px_rgba(255,0,127,0.4)]">
-                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" /></svg>
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white mb-2">Planning & Marketing</h3>
-                                    <p className="text-slate-400 text-sm">기술에 인간 중심의 사고를 더해 매력적이고 시장 가치 있는 프로덕트를 기획하고 알리는 역량.</p>
-                                </div>
+                            {/* Card 3: Green (Primary) */}
+                            <div className="bg-brand-cardDark border-2 border-slate-700 p-8 rounded-2xl flex flex-col h-full group transition-all duration-300 hover:-translate-y-3 hover:border-brand-primary hover:shadow-[0_0_30px_rgba(57,255,20,0.5)] relative overflow-hidden">
+                                <div className="absolute -top-10 -right-10 w-24 h-24 bg-brand-primary/10 rounded-full blur-2xl group-hover:bg-brand-primary/30 transition-all duration-500"></div>
+                                <h3 className="text-2xl font-black text-white mb-2 group-hover:text-brand-primary transition-colors relative z-10">기타 활동</h3>
+                                <p className="text-brand-primary text-sm font-bold mb-4 tracking-wide relative z-10">효율의 세계에 더해진 다양성과 공감</p>
+                                <p className="text-slate-300 text-sm leading-relaxed mb-6 flex-grow relative z-10">
+                                    공학적 효율성 이전에 왜(Why)를 묻는 인문학적 성찰을 바탕으로 타인과 깊이 교감해 왔습니다.
+                                </p>
+                                <ul className="space-y-2 text-sm text-slate-400 font-medium relative z-10">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>CNU RC 우수 활동자 표창</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>CNU RC 큐브 우수자 선정</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>인문도서 감상문 경진 우수상</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>한국어 연수생 도우미</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>리드미 교내 공모전 최우수상</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </section>
             );
-        }
+        };
 
         // 4. Projects Section
         const Projects = () => {
@@ -408,7 +418,7 @@
                     <Header darkMode={darkMode} setDarkMode={setDarkMode} />
                     <main className="flex-1 w-full overflow-x-hidden">
                         <Hero />
-                        <About />
+                        <Experience />
                         <Projects />
                         <Awards />
                     </main>
