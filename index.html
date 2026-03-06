@@ -366,26 +366,52 @@
 
         // 4.5 Certifications Section
         const Certifications = () => {
+            const [selectedCert, setSelectedCert] = useState(null);
+
             const certs = [
                 {
                     title: "AI 도구 활용 기초 체력",
                     summary: "Google AI & Gemini Academy 수료",
-                    theme: { text: "text-brand-secondary", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,230,0,0.6)] group-hover:border-brand-secondary/50", icon: "bg-brand-secondary/10" }
+                    theme: { text: "text-brand-secondary", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,230,0,0.6)] group-hover:border-brand-secondary/50", icon: "bg-brand-secondary/10" },
+                    modalContent: {
+                        topTitle: "AI 도구 활용 기초 체력",
+                        details: "Coursera 'Google AI Essentials' 과정 수료 / Gemini Academy 수료",
+                        appeal: "💡 구글의 공신력 있는 교육 과정을 통해 AI 모델의 원리를 이해하고 프롬프트 엔지니어링 및 생산성 향상의 기본기를 탄탄히 다졌습니다.",
+                        images: ["./google_ai.jpg", "./gemini.jpg"]
+                    }
                 },
                 {
                     title: "AI 기획 및 실무 역량",
                     summary: "AI 전문가 2급 & 실무 콘텐츠 제작 수료",
-                    theme: { text: "text-brand-accent", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,0,127,0.6)] group-hover:border-brand-accent/50", icon: "bg-brand-accent/10" }
+                    theme: { text: "text-brand-accent", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,0,127,0.6)] group-hover:border-brand-accent/50", icon: "bg-brand-accent/10" },
+                    modalContent: {
+                        topTitle: "AI 기획 및 실무 콘텐츠 제작 역량",
+                        details: "AI 전문가 2급 자격증 취득 (한국창직협회) / AI Practical Content Creation 수료 (UMAVEN)",
+                        appeal: "💡 AI 기술을 실무 기획에 적용하여, 지역 사회의 현안을 해결하는 콘텐츠를 제작하고 프로젝트를 리드하는 실질적인 역량을 입증했습니다.",
+                        images: ["./ai_expert.jpg", "./umaven.jpg"]
+                    }
                 },
                 {
                     title: "ESG 경영 통찰력",
                     summary: "ESG 전문가 1급 자격증 취득",
-                    theme: { text: "text-[#00FFFF]", groupHover: "group-hover:shadow-[0_0_20px_rgba(0,255,255,0.6)] group-hover:border-[#00FFFF]/50", icon: "bg-[#00FFFF]/10" }
+                    theme: { text: "text-[#00FFFF]", groupHover: "group-hover:shadow-[0_0_20px_rgba(0,255,255,0.6)] group-hover:border-[#00FFFF]/50", icon: "bg-[#00FFFF]/10" },
+                    modalContent: {
+                        topTitle: "지속 가능한 발전을 위한 ESG 경영 통찰력",
+                        details: "ESG 전문가 1급 자격증 취득 (주식회사 커리어)",
+                        appeal: "💡 산업 전반의 ESG 전략을 이해하고, 기술을 통해 환경 문제와 사회적 가치를 동시에 해결하는 지속 가능한 비즈니스 모델을 기획합니다.",
+                        images: ["./esg.jpg"]
+                    }
                 },
                 {
                     title: "데이터 기반 통계 분석 역량",
                     summary: "R통계 및 빅데이터 분석 실습 이수",
-                    theme: { text: "text-brand-primary", groupHover: "group-hover:shadow-[0_0_20px_rgba(57,255,20,0.6)] group-hover:border-brand-primary/50", icon: "bg-brand-primary/10" }
+                    theme: { text: "text-brand-primary", groupHover: "group-hover:shadow-[0_0_20px_rgba(57,255,20,0.6)] group-hover:border-brand-primary/50", icon: "bg-brand-primary/10" },
+                    modalContent: {
+                        topTitle: "데이터 기반 통계 분석 및 검증 역량",
+                        details: "AI 분석을 위한 R통계교육 및 AI 기반 산업체 빅데이터 분석 실습교육 이수 (총 39시간)",
+                        appeal: "💡 R 통계를 활용하여 실제 산업 데이터를 정밀하게 분석하고, 알고리즘의 통계적 타당성을 직접 검증하는 역량을 길렀습니다.",
+                        images: ["./r_stat.jpg"]
+                    }
                 }
             ];
 
@@ -398,7 +424,7 @@
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                             {certs.map((cert, idx) => (
-                                <div key={idx} className={`fade-in-section opacity-0 translate-y-8 group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-700 ${cert.theme.groupHover} hover:-translate-y-2 delay-${idx * 100}`}>
+                                <div key={idx} onClick={() => setSelectedCert(cert)} className={`fade-in-section cursor-pointer opacity-0 translate-y-8 group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-700 ${cert.theme.groupHover} hover:-translate-y-2 delay-${idx * 100}`}>
                                     <div className="flex flex-col h-full gap-4">
                                         <div className={`w-12 h-12 rounded-full ${cert.theme.icon} flex items-center justify-center mb-2`}>
                                             <div className={`w-3 h-3 rounded-full ${cert.theme.text.includes('#') ? 'bg-[#00FFFF]' : cert.theme.text.replace('text-', 'bg-')} animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]`}></div>
@@ -414,6 +440,53 @@
                             ))}
                         </div>
                     </div>
+
+                    {/* Certifications Modal Overlay */}
+                    {selectedCert && (
+                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12 animate-in fade-in duration-300"
+                            onClick={() => setSelectedCert(null)}>
+                            {/* Backdrop */}
+                            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+
+                            {/* Modal Content container */}
+                            <div className={`relative bg-brand-cardDark border border-slate-700 w-full max-w-4xl rounded-2xl md:rounded-3xl overflow-hidden flex flex-col shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)] z-10 max-h-[90vh] overflow-y-auto`}
+                                onClick={(e) => e.stopPropagation()}>
+
+                                {/* Close Button */}
+                                <button
+                                    onClick={() => setSelectedCert(null)}
+                                    className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-slate-800/80 hover:bg-slate-700 text-slate-300 rounded-full flex items-center justify-center transition-colors z-[110]"
+                                    aria-label="Close modal"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+
+                                {/* Top Area: Text Content */}
+                                <div className="p-8 md:p-12 bg-slate-900 flex flex-col justify-center items-center text-center">
+                                    <h3 className={`text-2xl md:text-3xl font-black mb-4 ${selectedCert.theme.text}`}>{selectedCert.modalContent.topTitle}</h3>
+                                    <p className="text-slate-300 md:text-lg font-medium mb-8 max-w-2xl">{selectedCert.modalContent.details}</p>
+                                    <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 md:p-6 max-w-3xl">
+                                        <p className={`text-lg md:text-xl font-bold leading-relaxed text-[#eee]`}>{selectedCert.modalContent.appeal}</p>
+                                    </div>
+                                </div>
+
+                                {/* Bottom Area: Image Container */}
+                                <div className="w-full bg-slate-950 p-6 md:p-10 flex flex-col md:flex-row items-center justify-center gap-6 border-t border-slate-800">
+                                    {selectedCert.modalContent.images && selectedCert.modalContent.images.map((imgSrc, imgIdx) => (
+                                        <div key={imgIdx} className="relative w-full rounded-xl overflow-hidden shadow-lg border border-slate-800/80 flex-1 flex items-center justify-center bg-slate-900 p-2">
+                                            <img
+                                                src={imgSrc}
+                                                alt={`${selectedCert.modalContent.topTitle} - Image ${imgIdx + 1}`}
+                                                className="w-full h-auto max-h-[450px] object-contain"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </section>
             );
         };
