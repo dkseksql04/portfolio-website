@@ -116,7 +116,7 @@
                                 <a href="#experience" className="hover:text-brand-secondary transition-colors cursor-pointer text-slate-300">Experience & Journey</a>
                                 <a href="#timeline" className="hover:text-brand-accent transition-colors cursor-pointer text-slate-300">Milestones</a>
                                 <a href="#activities" className="hover:text-brand-primary transition-colors cursor-pointer text-slate-300">Major Activities</a>
-                                <a href="#awards" className="hover:text-brand-secondary transition-colors cursor-pointer text-slate-300">Awards & Activities</a>
+                                <a href="#softskills" className="hover:text-brand-secondary transition-colors cursor-pointer text-slate-300">Soft Skills</a>
                             </nav>
                             {/* Dark Mode Toggle */}
                             <button
@@ -165,7 +165,7 @@
                             <a href="#experience" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Experience & Journey</a>
                             <a href="#timeline" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Milestones</a>
                             <a href="#activities" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Major Activities</a>
-                            <a href="#awards" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Awards & Activities</a>
+                            <a href="#softskills" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Soft Skills</a>
                         </div>
                     )}
                 </header>
@@ -521,63 +521,46 @@
             );
         };
 
-        // 6. Awards & Activities Section
-        const Awards = () => {
-            const categories = [
+        // 6. Soft Skills Section
+        const SoftSkills = () => {
+            const skills = [
                 {
-                    title: "🥇 Awards",
-                    colorClass: "text-brand-secondary border-brand-secondary shadow-[0_0_10px_rgba(255,230,0,0.5)]",
-                    bgClass: "bg-brand-secondary hover:shadow-[0_0_15px_rgba(255,230,0,0.8)]",
-                    items: [
-                        { year: "2025", title: "공대생 인문도서 감상문 경진대회 우수상", org: "충남대학교" },
-                        { year: "2024~2025", title: "CNU RC 프로그램 우수활동자 표창", org: "충남대학교" }
-                    ]
+                    title: "RC 프로그램 우수활동",
+                    summary: "2년 연속 표창으로 증명된 성실함",
+                    theme: { text: "text-brand-secondary", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,230,0,0.6)] group-hover:border-brand-secondary/50", icon: "bg-brand-secondary/10" }
                 },
                 {
-                    title: "🎓 Education",
-                    colorClass: "text-brand-primary border-brand-primary shadow-[0_0_10px_rgba(57,255,20,0.5)]",
-                    bgClass: "bg-brand-primary hover:shadow-[0_0_15px_rgba(57,255,20,0.8)]",
-                    items: [
-                        { year: "2025", title: "AI 전문가 2급 자격 취득", org: "" },
-                        { year: "2024", title: "UMAVEN AI Practical Content Creation 수료", org: "UMAVEN" },
-                        { year: "2024", title: "AI 분석을 위한 R통계교육 및 실습 수료", org: "" }
-                    ]
+                    title: "독후감 공모전 2관왕",
+                    summary: "설득력 있는 글쓰기와 기획력",
+                    theme: { text: "text-brand-accent", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,0,127,0.6)] group-hover:border-brand-accent/50", icon: "bg-brand-accent/10" }
                 },
                 {
-                    title: "🤝 Activities",
-                    colorClass: "text-brand-accent border-brand-accent shadow-[0_0_10px_rgba(255,0,127,0.5)]",
-                    bgClass: "bg-brand-accent hover:shadow-[0_0_15px_rgba(255,0,127,0.8)]",
-                    items: [
-                        { year: "2024", title: "한국어 연수생 도우미 프로그램", org: "교내 활동" }
-                    ]
+                    title: "한국어 연수생 도우미",
+                    summary: "21시간의 교류와 글로벌 소통 능력",
+                    theme: { text: "text-brand-primary", groupHover: "group-hover:shadow-[0_0_20px_rgba(57,255,20,0.6)] group-hover:border-brand-primary/50", icon: "bg-brand-primary/10" }
                 }
             ];
 
             return (
-                <section id="awards" className="py-20 md:py-24 bg-transparent border-y border-slate-800 transition-colors">
+                <section id="softskills" className="py-20 md:py-24 bg-transparent border-y border-slate-800 transition-colors fade-in-section opacity-0 translate-y-8 transition-all duration-1000 ease-out">
                     <div className="max-w-6xl mx-auto px-6">
-                        <div className="mb-12 md:mb-16 text-center md:text-left">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Awards & Activities <span className="text-brand-primary">.</span></h2>
-                            <p className="text-slate-400">저의 도전과 성장 과정이 담긴 기록입니다.</p>
+                        <div className="mb-12 md:mb-16 text-center">
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">기타 활동 (Soft Skills) <span className="text-brand-primary">.</span></h2>
+                            <p className="text-slate-400">다양한 경험을 통해 길러온 커뮤니케이션과 기획 역량입니다.</p>
                         </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12">
-                            {categories.map((category, idx) => (
-                                <div key={idx} className="relative bg-brand-cardDark p-6 md:p-8 rounded-2xl md:rounded-3xl border border-slate-800">
-                                    <h3 className={`text-xl md:text-2xl font-black mb-6 md:mb-8 flex items-center gap-2 md:gap-3 ${category.colorClass.split(' ')[0]}`}>
-                                        {category.title}
-                                    </h3>
-                                    <div className="border-l-2 border-slate-700 ml-3 md:ml-4 pl-6 md:pl-8 space-y-8 md:space-y-10">
-                                        {category.items.map((item, iIdx) => (
-                                            <div key={iIdx} className="relative group">
-                                                {/* Timeline Node */}
-                                                <div className={`absolute -left-[33px] md:-left-[41px] top-1.5 w-3.5 h-3.5 md:w-4 md:h-4 rounded-full border-2 md:border-4 border-brand-dark ${category.bgClass} group-hover:scale-150 transition-all duration-300 z-10`}></div>
-
-                                                <div className="text-slate-400 text-xs md:text-sm font-black mb-1 tracking-widest">{item.year}</div>
-                                                <h4 className="text-base md:text-lg font-bold text-white mb-1 group-hover:text-slate-300 transition-colors leading-snug">{item.title}</h4>
-                                                {item.org && <div className="text-slate-500 text-xs font-bold uppercase tracking-wider">{item.org}</div>}
-                                            </div>
-                                        ))}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                            {skills.map((skill, idx) => (
+                                <div key={idx} className={`group cursor-pointer bg-slate-900 border border-slate-800 rounded-2xl p-8 transition-all duration-300 ${skill.theme.groupHover} hover:-translate-y-2`}>
+                                    <div className="flex flex-col h-full gap-4">
+                                        <div className={`w-12 h-12 rounded-full ${skill.theme.icon} flex items-center justify-center mb-2`}>
+                                            <div className={`w-3 h-3 rounded-full ${skill.theme.text.replace('text-', 'bg-')} animate-pulse`}></div>
+                                        </div>
+                                        <h3 className={`text-xl md:text-2xl font-black ${skill.theme.text}`}>
+                                            {skill.title}
+                                        </h3>
+                                        <p className="text-slate-300 font-medium leading-relaxed mt-auto">
+                                            {skill.summary}
+                                        </p>
                                     </div>
                                 </div>
                             ))}
@@ -643,7 +626,7 @@
                         <Experience />
                         <Timeline />
                         <MajorActivities />
-                        <Awards />
+                        <SoftSkills />
                     </main>
                     <Footer />
                 </div>
