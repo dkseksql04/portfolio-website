@@ -523,26 +523,43 @@
 
         // 6. Soft Skills Section
         const SoftSkills = () => {
+            const [selectedSkill, setSelectedSkill] = useState(null);
+
             const skills = [
                 {
                     title: "RC 프로그램 우수활동",
                     summary: "2년 연속 표창으로 증명된 성실함",
-                    theme: { text: "text-brand-secondary", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,230,0,0.6)] group-hover:border-brand-secondary/50", icon: "bg-brand-secondary/10" }
+                    theme: { text: "text-brand-secondary", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,230,0,0.6)] group-hover:border-brand-secondary/50", icon: "bg-brand-secondary/10", shadow: "shadow-[0_0_30px_rgba(255,230,0,0.4)]" },
+                    modalContent: {
+                        topTitle: "2년 연속 RC 프로그램 우수활동자 표창",
+                        details: "충남대 학생생활관 RC활동 표창(RC 센터장상) / 2025학년도 CNU RC 프로그램 우수활동자",
+                        appeal: "💡 2년간의 꾸준한 멘토링 활동으로 증명된 타의 모범이 되는 투철한 책임감과 성실함으로, 개발자로서의 어떤 끈기 있는 작업도 완주할 수 있습니다."
+                    }
                 },
                 {
                     title: "독후감 공모전 2관왕",
                     summary: "설득력 있는 글쓰기와 기획력",
-                    theme: { text: "text-brand-accent", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,0,127,0.6)] group-hover:border-brand-accent/50", icon: "bg-brand-accent/10" }
+                    theme: { text: "text-brand-accent", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,0,127,0.6)] group-hover:border-brand-accent/50", icon: "bg-brand-accent/10", shadow: "shadow-[0_0_30px_rgba(255,0,127,0.4)]" },
+                    modalContent: {
+                        topTitle: "교내 인문도서 및 독후감 공모전 2관왕",
+                        details: "25년 공대생 인문도서 감상문 우수상 (이어령의 마지막 수업) / 제14회 리드미 독후감 공모전 최우수상 (물고기는 존재하지 않는다)",
+                        appeal: "💡 깊이 있는 인문학적 성찰과 타인을 논리적으로 설득하는 글쓰기 역량을 바탕으로, 개발 프로젝트의 핵심을 찌르는 사업 계획서 작성에 자신 있습니다."
+                    }
                 },
                 {
                     title: "한국어 연수생 도우미",
                     summary: "21시간의 교류와 글로벌 소통 능력",
-                    theme: { text: "text-brand-primary", groupHover: "group-hover:shadow-[0_0_20px_rgba(57,255,20,0.6)] group-hover:border-brand-primary/50", icon: "bg-brand-primary/10" }
+                    theme: { text: "text-brand-primary", groupHover: "group-hover:shadow-[0_0_20px_rgba(57,255,20,0.6)] group-hover:border-brand-primary/50", icon: "bg-brand-primary/10", shadow: "shadow-[0_0_30px_rgba(57,255,20,0.4)]" },
+                    modalContent: {
+                        topTitle: "한국어 연수생 도우미 프로그램 이수",
+                        details: "국제교류본부 주관 외국인 유학생 한국어 학습 및 문화 교류 (총 21시간 이수)",
+                        appeal: "💡 외국인 연수생들과 21시간 깊이 교감하며 쌓은 문화적 수용성과 글로벌 소통 능력을 바탕으로, 다양한 전공자가 모인 팀 프로젝트의 피스메이커가 되겠습니다."
+                    }
                 }
             ];
 
             return (
-                <section id="softskills" className="py-20 md:py-24 bg-transparent border-y border-slate-800 transition-colors fade-in-section opacity-0 translate-y-8 transition-all duration-1000 ease-out">
+                <section id="softskills" className="py-20 md:py-24 bg-transparent border-y border-slate-800 transition-colors relative z-20">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="mb-12 md:mb-16 text-center">
                             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">기타 활동 (Soft Skills) <span className="text-brand-primary">.</span></h2>
@@ -550,7 +567,7 @@
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                             {skills.map((skill, idx) => (
-                                <div key={idx} className={`group cursor-pointer bg-slate-900 border border-slate-800 rounded-2xl p-8 transition-all duration-300 ${skill.theme.groupHover} hover:-translate-y-2`}>
+                                <div key={idx} onClick={() => setSelectedSkill(skill)} className={`group cursor-pointer bg-slate-900 border border-slate-800 rounded-2xl p-8 transition-all duration-300 ${skill.theme.groupHover} hover:-translate-y-2`}>
                                     <div className="flex flex-col h-full gap-4">
                                         <div className={`w-12 h-12 rounded-full ${skill.theme.icon} flex items-center justify-center mb-2`}>
                                             <div className={`w-3 h-3 rounded-full ${skill.theme.text.replace('text-', 'bg-')} animate-pulse`}></div>
@@ -566,6 +583,52 @@
                             ))}
                         </div>
                     </div>
+
+                    {/* Soft Skills Modal Overlay */}
+                    {selectedSkill && (
+                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12 animate-in fade-in duration-300"
+                            onClick={() => setSelectedSkill(null)}>
+                            {/* Backdrop */}
+                            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+
+                            {/* Modal Content container */}
+                            <div className={`relative bg-brand-cardDark border border-slate-700 w-full max-w-4xl rounded-2xl md:rounded-3xl overflow-hidden flex flex-col shadow-2xl ${selectedSkill.theme.shadow} z-10 max-h-full overflow-y-auto`}
+                                onClick={(e) => e.stopPropagation()}>
+
+                                {/* Close Button */}
+                                <button
+                                    onClick={() => setSelectedSkill(null)}
+                                    className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-slate-800/80 hover:bg-slate-700 text-slate-300 rounded-full flex items-center justify-center transition-colors z-20"
+                                    aria-label="Close modal"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+
+                                {/* Top Area: Text Content */}
+                                <div className="p-8 md:p-12 bg-slate-900 flex flex-col justify-center items-center text-center">
+                                    <h3 className={`text-2xl md:text-4xl font-black mb-4 ${selectedSkill.theme.text}`}>{selectedSkill.modalContent.topTitle}</h3>
+                                    <p className="text-slate-300 md:text-lg font-medium mb-8 max-w-2xl">{selectedSkill.modalContent.details}</p>
+                                    <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 md:p-6 max-w-3xl">
+                                        <p className={`text-lg md:text-xl font-bold leading-relaxed ${selectedSkill.theme.text.replace('text-brand-', 'text-brand-')}`}>{selectedSkill.modalContent.appeal}</p>
+                                    </div>
+                                </div>
+
+                                {/* Bottom Area: Image Container */}
+                                <div className="w-full bg-slate-950 p-6 md:p-10 flex items-center justify-center border-t border-slate-800">
+                                    <div className="relative w-full max-w-2xl rounded-xl overflow-hidden shadow-lg border border-slate-800/80">
+                                        <img
+                                            src="https://via.placeholder.com/500x350"
+                                            alt={selectedSkill.modalContent.topTitle}
+                                            className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent mix-blend-overlay pointer-events-none"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </section>
             );
         };
