@@ -115,6 +115,7 @@
                                 <a href="#home" className="hover:text-brand-primary transition-colors cursor-pointer text-slate-300">Home</a>
                                 <a href="#experience" className="hover:text-brand-secondary transition-colors cursor-pointer text-slate-300">Experience & Journey</a>
                                 <a href="#timeline" className="hover:text-brand-accent transition-colors cursor-pointer text-slate-300">Milestones</a>
+                                <a href="#certifications" className="hover:text-[#00FFFF] transition-colors cursor-pointer text-slate-300">Certifications</a>
                                 <a href="#activities" className="hover:text-brand-primary transition-colors cursor-pointer text-slate-300">Major Activities</a>
                                 <a href="#softskills" className="hover:text-brand-secondary transition-colors cursor-pointer text-slate-300">Soft Skills</a>
                             </nav>
@@ -164,6 +165,7 @@
                             <a href="#home" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Home</a>
                             <a href="#experience" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Experience & Journey</a>
                             <a href="#timeline" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Milestones</a>
+                            <a href="#certifications" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Certifications</a>
                             <a href="#activities" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Major Activities</a>
                             <a href="#softskills" onClick={() => setIsMenuOpen(false)} className="py-2 text-slate-600 dark:text-slate-300 hover:text-brand-primary">Soft Skills</a>
                         </div>
@@ -356,6 +358,60 @@
                                     </div>
                                 );
                             })}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // 4.5 Certifications Section
+        const Certifications = () => {
+            const certs = [
+                {
+                    title: "AI 도구 활용 기초 체력",
+                    summary: "Google AI & Gemini Academy 수료",
+                    theme: { text: "text-brand-secondary", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,230,0,0.6)] group-hover:border-brand-secondary/50", icon: "bg-brand-secondary/10" }
+                },
+                {
+                    title: "AI 기획 및 실무 역량",
+                    summary: "AI 전문가 2급 & 실무 콘텐츠 제작 수료",
+                    theme: { text: "text-brand-accent", groupHover: "group-hover:shadow-[0_0_20px_rgba(255,0,127,0.6)] group-hover:border-brand-accent/50", icon: "bg-brand-accent/10" }
+                },
+                {
+                    title: "ESG 경영 통찰력",
+                    summary: "ESG 전문가 1급 자격증 취득",
+                    theme: { text: "text-[#00FFFF]", groupHover: "group-hover:shadow-[0_0_20px_rgba(0,255,255,0.6)] group-hover:border-[#00FFFF]/50", icon: "bg-[#00FFFF]/10" }
+                },
+                {
+                    title: "데이터 기반 통계 분석 역량",
+                    summary: "R통계 및 빅데이터 분석 실습 이수",
+                    theme: { text: "text-brand-primary", groupHover: "group-hover:shadow-[0_0_20px_rgba(57,255,20,0.6)] group-hover:border-brand-primary/50", icon: "bg-brand-primary/10" }
+                }
+            ];
+
+            return (
+                <section id="certifications" className="py-20 md:py-24 bg-transparent border-t border-slate-800 transition-colors relative z-20">
+                    <div className="max-w-6xl mx-auto px-6">
+                        <div className="mb-12 md:mb-16 text-center">
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Certifications & Education <span className="text-[#00FFFF]">.</span></h2>
+                            <p className="text-slate-400">데이터와 AI, 그리고 ESG 통찰력을 증명하는 전문 자격과 수료증입니다.</p>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                            {certs.map((cert, idx) => (
+                                <div key={idx} className={`fade-in-section opacity-0 translate-y-8 group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-700 ${cert.theme.groupHover} hover:-translate-y-2 delay-${idx * 100}`}>
+                                    <div className="flex flex-col h-full gap-4">
+                                        <div className={`w-12 h-12 rounded-full ${cert.theme.icon} flex items-center justify-center mb-2`}>
+                                            <div className={`w-3 h-3 rounded-full ${cert.theme.text.includes('#') ? 'bg-[#00FFFF]' : cert.theme.text.replace('text-', 'bg-')} animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]`}></div>
+                                        </div>
+                                        <h3 className={`text-xl font-bold ${cert.theme.text}`}>
+                                            {cert.title}
+                                        </h3>
+                                        <p className="text-slate-300 font-medium leading-relaxed mt-auto text-sm md:text-base">
+                                            {cert.summary}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
@@ -692,6 +748,7 @@
                         <Hero />
                         <Experience />
                         <Timeline />
+                        <Certifications />
                         <MajorActivities />
                         <SoftSkills />
                     </main>
