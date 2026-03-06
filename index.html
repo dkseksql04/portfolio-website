@@ -533,7 +533,8 @@
                     modalContent: {
                         topTitle: "2년 연속 RC 프로그램 우수활동자 표창",
                         details: "충남대 학생생활관 RC활동 표창(RC 센터장상) / 2025학년도 CNU RC 프로그램 우수활동자",
-                        appeal: "💡 2년간의 꾸준한 멘토링 활동으로 증명된 타의 모범이 되는 투철한 책임감과 성실함으로, 개발자로서의 어떤 끈기 있는 작업도 완주할 수 있습니다."
+                        appeal: "💡 2년간의 꾸준한 멘토링 활동으로 증명된 타의 모범이 되는 투철한 책임감과 성실함으로, 개발자로서의 어떤 끈기 있는 작업도 완주할 수 있습니다.",
+                        images: ["/2024RC_award.jpg", "/2025RC_award.jpg"]
                     }
                 },
                 {
@@ -543,7 +544,8 @@
                     modalContent: {
                         topTitle: "교내 인문도서 및 독후감 공모전 2관왕",
                         details: "25년 공대생 인문도서 감상문 우수상 (이어령의 마지막 수업) / 제14회 리드미 독후감 공모전 최우수상 (물고기는 존재하지 않는다)",
-                        appeal: "💡 깊이 있는 인문학적 성찰과 타인을 논리적으로 설득하는 글쓰기 역량을 바탕으로, 개발 프로젝트의 핵심을 찌르는 사업 계획서 작성에 자신 있습니다."
+                        appeal: "💡 깊이 있는 인문학적 성찰과 타인을 논리적으로 설득하는 글쓰기 역량을 바탕으로, 개발 프로젝트의 핵심을 찌르는 사업 계획서 작성에 자신 있습니다.",
+                        images: ["/book_award.jpg", "/book_award(1).jpg"]
                     }
                 },
                 {
@@ -553,7 +555,8 @@
                     modalContent: {
                         topTitle: "한국어 연수생 도우미 프로그램 이수",
                         details: "국제교류본부 주관 외국인 유학생 한국어 학습 및 문화 교류 (총 21시간 이수)",
-                        appeal: "💡 외국인 연수생들과 21시간 깊이 교감하며 쌓은 문화적 수용성과 글로벌 소통 능력을 바탕으로, 다양한 전공자가 모인 팀 프로젝트의 피스메이커가 되겠습니다."
+                        appeal: "💡 외국인 연수생들과 21시간 깊이 교감하며 쌓은 문화적 수용성과 글로벌 소통 능력을 바탕으로, 다양한 전공자가 모인 팀 프로젝트의 피스메이커가 되겠습니다.",
+                        images: ["/korean_activity.png"]
                     }
                 }
             ];
@@ -616,15 +619,16 @@
                                 </div>
 
                                 {/* Bottom Area: Image Container */}
-                                <div className="w-full bg-slate-950 p-6 md:p-10 flex items-center justify-center border-t border-slate-800">
-                                    <div className="relative w-full max-w-2xl rounded-xl overflow-hidden shadow-lg border border-slate-800/80">
-                                        <img
-                                            src="https://via.placeholder.com/500x350"
-                                            alt={selectedSkill.modalContent.topTitle}
-                                            className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent mix-blend-overlay pointer-events-none"></div>
-                                    </div>
+                                <div className="w-full bg-slate-950 p-6 md:p-10 flex flex-col items-center justify-center gap-6 border-t border-slate-800">
+                                    {selectedSkill.modalContent.images && selectedSkill.modalContent.images.map((imgSrc, imgIdx) => (
+                                        <div key={imgIdx} className="relative w-full max-w-2xl rounded-xl overflow-hidden shadow-lg border border-slate-800/80">
+                                            <img
+                                                src={imgSrc}
+                                                alt={`${selectedSkill.modalContent.topTitle} - Image ${imgIdx + 1}`}
+                                                className="w-full h-auto max-h-[700px] object-contain bg-slate-900"
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
